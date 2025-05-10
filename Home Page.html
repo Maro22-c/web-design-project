@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Project</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <a href="Home Page.html">
+          <img src="images/Logo.png" alt="Website logo" width="100" />
+        </a>
+      </div>
+      <nav>
+        <a href="Home Page.html">Home</a>
+        <a href="#">Our Work</a>
+        <a href="#">About Us</a>
+        <a href="contact us.html">Contact Us</a>
+        <a href="#">Donate</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="theme"></section>
+      <section class="features">
+        <div class="feature terrestrial">
+          <h3>TERRESTRIAL WILDLIFE CONSERVATION</h3>
+          <p>
+            Conserving land-dwelling species like gazelles, wolves, and reptiles
+            by protecting their habitats and migration routes.
+            <br />
+            <a href="#" class="read-more">Read More</a>
+          </p>
+        </div>
+        <div class="feature marine">
+          <h3>MARINE CONSERVATION</h3>
+          <p>
+            Preserving ocean life through coral reef restoration, marine
+            protected zones, and the rescue of sea turtles and dolphins.
+            <br />
+            <a href="#" class="read-more">Read More</a>
+          </p>
+        </div>
+        <div class="feature Endangered">
+          <h3>ENDANGERED SPECIES RECOVERY</h3>
+          <p>
+            Focused breeding, tracking, and rehabilitation programs to help
+            critically endangered animals survive and recover.
+            <br />
+            <a href="#" class="read-more">Read More</a>
+          </p>
+        </div>
+        <div class="feature Wetland">
+          <h3>WETLAND & RIPARIAN PROTECTION</h3>
+          <p>
+            Safeguarding rivers, swamps, and wetlands that support amphibians,
+            migratory birds, and freshwater mammals.
+            <br />
+            <a href="#" class="read-more">Read More</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="content"></section>
+      <section class="eagle">
+        <p>
+          This is<br />
+          an Eagle!
+        </p>
+      </section>
+    </main>
+
+    <!-- Scroll-trigger script for navbar -->
+    <script>
+      const header = document.querySelector(".navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    </script>
+
+    <footer>
+      <div class="footer-bottom">
+        <p>&copy;2025 Wildlife Conservation Project</p>
+        <p>RM Wildlife is a student-built academic web design project.</p>
+        <p>1234 Example Blvd, Web City, Code State</p>
+        <img src="images/facebook.png" alt="facebook icone" width="40px" height="40px"> 
+        <img src="images/insta.png" alt="instagram icone"  width="40px" height="40px"> 
+        <img src="images/linkedin.png" alt="linkedIn icone" width="40px" height="40px"> 
+        <img src="images/youtube.png" alt="youtube icone" width="40px" height="40px">
+        
+      </div>
+    </footer>
+  </body>
+</html>
