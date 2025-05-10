@@ -222,25 +222,54 @@ footer {
   padding: 5px 20px;
 }
 
-.footer-middle {
-  margin-bottom: 20px;
-}
-
-.footer-legal {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.footer-legal a {
-  text-decoration: none;
-  color: white;
-  font-size: 14px;
-}
-
 .footer-bottom {
   text-align: center;
   font-size: 12px;
   color: white;
+  clear: both;
+}
+
+.brand img {
+  float: left;
+}
+
+.subscribe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  margin: 30px 20px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.subscribe p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.subscribe form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.subscribe form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 250px;
+  font-size: 14px;
+}
+
+.subscribe form button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  font-size: 14px;
+  cursor: pointer;
 }
