@@ -71,9 +71,8 @@ body {
   padding: 50px;
   margin: 100px auto;
   width: 50%;
-  box-shadow: -1px 1px  10px grey;
+  box-shadow: -1px 1px 10px grey;
   border-radius: 10px;
-  
 }
 
 .contact-container h2 {
@@ -82,12 +81,11 @@ body {
   margin-bottom: 30px;
 }
 
-.contact-container p{
+.contact-container p {
   text-align: center;
   color: #2e7d32;
   font-size: 18px;
-  font-family: 'Times New Roman', Times, serif;
-
+  font-family: "Times New Roman", Times, serif;
 }
 
 .contact-container form {
@@ -96,15 +94,16 @@ body {
   gap: 15px;
 }
 
-.contact-container input, .contact-container textarea {
+.contact-container input,
+.contact-container textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
-  
 }
 
-.contact-container input:focus, .contact-container textarea:focus {
+.contact-container input:focus,
+.contact-container textarea:focus {
   border-color: #2e7d32;
 }
 
@@ -128,7 +127,6 @@ body {
 
 .contact-container .btn {
   display: inline;
-  
 }
 
 .eagle {
@@ -246,5 +244,3 @@ footer {
   font-size: 12px;
   color: white;
 }
-
-
