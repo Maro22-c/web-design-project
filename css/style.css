@@ -139,12 +139,17 @@ body {
 
 .eagle p {
   color: white;
-  font-family: monospace;
-  font-weight: bolder;
-  font-size: 100px;
+  font-family: Segoe UI, Tahoma, sans-serif;
+  font-size: 88px;
+  font-weight: 900;
   float: right;
-  padding: 20px;
+  padding: 60px 40px;
+  line-height: 1.2;
+  text-align: right;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
 }
+
 .features {
   display: flex;
   height: 75vh;
@@ -272,4 +277,26 @@ footer {
   border: 1px solid white;
   font-size: 14px;
   cursor: pointer;
+}
+
+.contact-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 15;
+  background-color: #2e7d32;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.contact-float img {
+  width: 35px;
+  height: 35px;
+}
+
+.contact-float:hover {
+  transform: scale(1.1);
+  background-color: #27962a;
 }
