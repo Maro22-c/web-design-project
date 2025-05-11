@@ -335,3 +335,47 @@ footer {
 .donate-btn:hover {
   background-color: #27962a;
 }
+
+.why-donate {
+  background-color: #f0f0f0;
+  padding: 60px 20px;
+}
+
+.why-donate-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-donate-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  
+}
+
+.why-donate-item img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.why-donate-text {
+  
+  padding: 10px;
+}
+
+.why-donate-text h2 {
+  font-size: 35px;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.why-donate-text p {
+  font-size: 20px;
+  color: #333;
+  line-height: 1.5;
+}
