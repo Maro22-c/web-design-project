@@ -421,16 +421,16 @@ footer {
   font-weight: bold;
 }
 
-.donation-box {
+.donation-container {
   background-color: #f0f0f0;
   padding: 50px 20px;
   text-align: center;
 }
 
-.donation-box h2 {
+.donation-container h2 {
   font-size: 32px;
-  color: #003f3d;
-  margin-bottom: 20px;
+  color: #1b5e20;
+  margin-bottom: 30px;
 }
 
 .donation-icon {
