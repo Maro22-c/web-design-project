@@ -318,7 +318,8 @@ footer {
 
 .donate-section p {
   font-size: 1.2em;
-  margin-bottom: 1em;
+  margin-bottom: 30px;
+
 }
 
 .donate-btn {
@@ -326,8 +327,9 @@ footer {
   background-color: #2e7d32;
   color: white;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1em;
+  margin: 0px 15px;
 }
 
 .donate-btn:hover {
