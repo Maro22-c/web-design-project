@@ -321,7 +321,6 @@ footer {
 .donate-section p {
   font-size: 1.2em;
   margin-bottom: 30px;
-
 }
 
 .donate-btn {
@@ -355,7 +354,6 @@ footer {
   display: flex;
   align-items: center;
   gap: 20px;
-  
 }
 
 .why-donate-item img {
@@ -366,7 +364,6 @@ footer {
 }
 
 .why-donate-text {
-  
   padding: 10px;
 }
 
