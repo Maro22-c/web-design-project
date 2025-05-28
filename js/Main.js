@@ -1,88 +1,49 @@
-var isSignedIn = false;
-var currentUser = "";
+// js/Auth.js
 
-var admin = { username: "admin", password: "admin123" };
-var users = [{ username: "user1", password: "pass1" }];
+// Users stored in array of objects (no localStorage)
+const users = [
+  { username: "admin", password: "admin123", isAdmin: true },
+  { username: "user1", password: "pass1", isAdmin: false }
+];
 
-var userTypeEl = document.getElementById("userType");
-var contntEl = document.getElementById("contnt");
-var msgEl = document.getElementById("msg");
+let loggedInUser = null; // current logged in username
 
-function createContent() {
-  var m = userTypeEl.value;
-
-  if (m === "admin" || m === "user") {
-    contntEl.innerHTML =
-      "<label>Username:</label>" +
-      '<input id="inpUser" type="text">' +
-      "<label>Password:</label>" +
-      '<input id="inpPass" type="password">';
-  } else {
-    contntEl.innerHTML =
-      "<label>New Username:</label>" +
-      '<input id="inpNewUser" type="text" >' +
-      "<label>New Password:</label>" +
-      '<input id="inpNewPass" type="password" >';
+// Register function
+function register(username, password) {
+  if (!username || !password) {
+    return { success: false, message: "Please enter username and password." };
   }
-}
-userTypeEl.addEventListener("change", createContent);
-createContent();
-
-function submitting() {
-  var mode = userTypeEl.value;
-  msgEl.style.color = "red";
-
-  if (mode === "admin") {
-    var u = document.getElementById("inpUser").value;
-    var p = document.getElementById("inpPass").value;
-    if (u === admin.username && p === admin.password) {
-      isSignedIn = true;
-      currentUser = u;
-
-      msgEl.style.color = "green";
-      msgEl.textContent = "Admin login successful!";
-    } else {
-      msgEl.textContent = "Invalid admin credentials.";
-    }
-  } else if (mode === "user") {
-    var u = document.getElementById("inpUser").value;
-    var p = document.getElementById("inpPass").value;
-    var idFound = false;
-    for (var i = 0; i < users.length; i++) {
-      if (users[i].username === u && users[i].password === p) {
-        idFound = true;
-        break;
-      }
-    }
-    if (idFound) {
-      isSignedIn = true;
-      currentUser = u;
-
-      msgEl.style.color = "green";
-      msgEl.textContent = "User login successful!";
-      window.location.href = "Home page.html";
-    } else {
-      msgEl.textContent = "Invalid username or password.";
-    }
-  } else {
-    var nu = document.getElementById("inpNewUser").value;
-    var np = document.getElementById("inpNewPass").value;
-    if (!nu || !np) {
-      msgEl.textContent = "Please fill both.";
-      return;
-    }
-    for (var j = 0; j < users.length; j++) {
-      if (users[j].username === nu) {
-        msgEl.textContent = "Username already exists.";
-        return;
-      }
-    }
-
-    users.push({ username: nu, password: np });
-    msgEl.style.color = "green";
-    msgEl.textContent = "User created! Please sign in.";
-    userTypeEl.value = "user";
-    createContent();
+  if (users.some(u => u.username === username)) {
+    return { success: false, message: "Username already exists." };
   }
+  users.push({ username, password, isAdmin: false });
+  return { success: true, message: "Registration successful. Please sign in." };
 }
-document.getElementById("submit").addEventListener("click", submitting);
+
+// Sign in function
+function signIn(username, password) {
+  if (!username || !password) {
+    return { success: false, message: "Please enter username and password." };
+  }
+  const user = users.find(u => u.username === username && u.password === password);
+  if (!user) {
+    return { success: false, message: "Invalid username or password." };
+  }
+  loggedInUser = user;
+  return { success: true, message: "Sign in successful.", user };
+}
+
+// Sign out
+function signOut() {
+  loggedInUser = null;
+}
+
+// Check if signed in
+function isSignedIn() {
+  return loggedInUser !== null;
+}
+
+// Get current user
+function getCurrentUser() {
+  return loggedInUser;
+}

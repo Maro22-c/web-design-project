@@ -77,6 +77,41 @@
       }
     </style>
   </head>
+  <script src="auth.js"></script>
+<script src="cart.js"></script>
+<script>
+  // Example: set current user (simulate sign-in)
+  // You will need a sign-in page or logic to set loggedInUser properly
+  // For test, you can manually call:
+  // signIn("user1", "pass1");
+
+  // Show welcome message somewhere, or just alert
+  if (!isSignedIn()) {
+    alert("Please sign in first.");
+    // redirect to sign in page or show sign in form
+    window.location.href = "SignInPage.html"; // adjust path as needed
+  } else {
+    console.log("Welcome", getCurrentUser().username);
+  }
+
+  // Attach Add to Cart handlers
+  document.querySelectorAll("button[data-title]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (!isSignedIn()) {
+        alert("You must sign in to add items to cart.");
+        window.location.href = "SignInPage.html";
+        return;
+      }
+      const title = btn.getAttribute("data-title");
+      const price = btn.getAttribute("data-price");
+      const result = addToCart({ title, price });
+      alert(result.message);
+    });
+  });
+
+  // Add any other UI code you want here (view cart button, sign out button, etc.)
+</script>
+
   <body>
     <a href="cart.html" class="cart-float" title="View Cart">
       <img src="images/LogoB.png" alt="Cart Icon" />

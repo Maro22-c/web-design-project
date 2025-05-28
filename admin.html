@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - View Carts</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto; }
+    .user-cart { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+    h3 { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <h2>Admin Panel: All User Carts</h2>
+  <div id="cartsContainer">
+    <p>No carts to show.</p>
+  </div>
+
+  <script>
+    // For demo: same "global" data structures (no persistence)
+    const users = [
+      { username: "admin", password: "admin123", isAdmin: true },
+      { username: "user1", password: "pass1", isAdmin: false }
+    ];
+
+    // Here should be the shared cart data if this were real multi-page app.
+    // For this demo, carts only exist in Shop page memory, so:
+    // You would have to connect these pages via backend or localStorage to share state.
+    // But as per your request no JSON or storage, so this is a placeholder:
+
+    // Example carts data for demo:
+    const carts = {
+      "user1": [
+        { title: "The Hobbit", price: "12.99" },
+        { title: "1984", price: "9.99" }
+      ],
+      "admin": [
+        { title: "The Midnight Library", price: "14.99" }
+      ]
+    };
+
+    const container = document.getElementById("cartsContainer");
+    container.innerHTML = ""; // clear default
+
+    if (Object.keys(carts).length === 0) {
+      container.innerHTML = "<p>No carts to show.</p>";
+    } else {
+      for (const username in carts) {
+        const userCart = carts[username];
+        const div = document.createElement("div");
+        div.classList.add("user-cart");
+        const h3 = document.createElement("h3");
+        h3.textContent = `User: ${username}`;
+        div.appendChild(h3);
+
+        userCart.forEach(item => {
+          const p = document.createElement("p");
+          p.textContent = `${item.title} - $${item.price}`;
+          div.appendChild(p);
+        });
+
+        container.appendChild(div);
+      }
+    }
+  </script>
+</body>
+</html>
