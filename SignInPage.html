@@ -1,81 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In</title>
+<head>
+  <meta charset="UTF-8">
+  <title>Sign In</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; padding: 50px; }
+    .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+    label, select, input { display: block; width: 100%; margin: 10px 0; }
+    button { background: #4CAF50; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+    #msg { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sign In / Register</h2>
+    <label for="userType">Choose:</label>
+    <select id="userType">
+      <option value="user">Sign In</option>
+      <option value="new">Register</option>
+    </select>
 
-    <style>
-      body {
-        background: #f5f3e7;
-        font-family: Arial, sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
-      .signin-box {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-        padding: 40px;
-        width: 320px;
-      }
-      .signin-box h2 {
-        margin-top: 0;
-        text-align: center;
-        color: #8b5e3c;
-      }
-      .signin-box label {
-        display: block;
-        margin: 7px;
-        color: #3e3e3e;
-      }
-      .signin-box input,
-      .signin-box select {
-        width: 333px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-      .signin-box button {
-        margin-top: 20px;
-        width: 333px;
-        padding: 10px;
-        background: #c9a66b;
-        border: none;
-        color: white;
-        font-size: large;
-        border-radius: 4px;
-      }
-      .signin-box button:hover {
-        background: #8b5e3c;
-      }
-      .message {
-        margin-top: 20px;
-        text-align: center;
-        color: red;
-      }
-    </style>
-  </head>
+    <div id="contnt"></div>
+    <button id="submit">Submit</button>
+    <p id="msg"></p>
+  </div>
 
-  <body>
-    <div class="signin-box">
-      <h2>Sign In</h2>
+  <script src="js/Main.js"></script>
+  <script>
+    const userTypeEl = document.getElementById("userType");
+    const contntEl = document.getElementById("contnt");
+    const msgEl = document.getElementById("msg");
 
-      <label for="userType"> Sign in as:</label>
-      <select id="userType">
-        <option value="admin">Admin</option>
-        <option value="user">User</option>
-        <option value="new">New User</option>
-      </select>
+    function createContent() {
+      if (userTypeEl.value === "new") {
+        contntEl.innerHTML = `
+          <label>New Username:</label><input id="inpNewUser" type="text" />
+          <label>New Password:</label><input id="inpNewPass" type="password" />
+        `;
+      } else {
+        contntEl.innerHTML = `
+          <label>Username:</label><input id="inpUser" type="text" />
+          <label>Password:</label><input id="inpPass" type="password" />
+        `;
+      }
+    }
 
-      <div id="contnt"></div>
+    userTypeEl.addEventListener("change", createContent);
+    createContent();
 
-      <button id="submit">Submit</button>
-      <div class="message" id="msg"></div>
-    </div>
-    <script src="js/Signin.js"></script>
-  </body>
+    document.getElementById("submit").addEventListener("click", () => {
+      const mode = userTypeEl.value;
+      msgEl.style.color = "red";
+
+      if (mode === "new") {
+        const newUser = document.getElementById("inpNewUser").value;
+        const newPass = document.getElementById("inpNewPass").value;
+        const result = window.handleRegister(newUser, newPass);
+        msgEl.textContent = result.message;
+        if (result.success) {
+          msgEl.style.color = "green";
+          userTypeEl.value = "user";
+          createContent();
+        }
+      } else {
+        const username = document.getElementById("inpUser").value;
+        const password = document.getElementById("inpPass").value;
+        const result = window.handleLoginSubmit(mode, username, password);
+        msgEl.textContent = result.message;
+        if (result.success) {
+          msgEl.style.color = "green";
+          setTimeout(() => {
+            window.location.href = "shop.html";
+          }, 1000);
+        }
+      }
+    });
+  </script>
+</body>
 </html>
