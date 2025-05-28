@@ -6,39 +6,36 @@
     <title>Shopping</title>
     <link rel="icon" href="images/LogoB.png" />
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-
-    </style>
+    <style></style>
   </head>
   <script src="auth.js"></script>
-<script src="cart.js"></script>
-<script>
+  <script src="cart.js"></script>
+  <script>
+    if (!isSignedIn()) {
+      alert("Please sign in first.");
+      // redirect to sign in page or show sign in form
+      window.location.href = "SignInPage.html"; // adjust path as needed
+    } else {
+      console.log("Welcome", getCurrentUser().username);
+    }
 
-  if (!isSignedIn()) {
-    alert("Please sign in first.");
-    // redirect to sign in page or show sign in form
-    window.location.href = "SignInPage.html"; // adjust path as needed
-  } else {
-    console.log("Welcome", getCurrentUser().username);
-  }
-
-  // Attach Add to Cart handlers
-  document.querySelectorAll("button[data-title]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (!isSignedIn()) {
-        alert("You must sign in to add items to cart.");
-        window.location.href = "SignInPage.html";
-        return;
-      }
-      const title = btn.getAttribute("data-title");
-      const price = btn.getAttribute("data-price");
-      const result = addToCart({ title, price });
-      alert(result.message);
+    // Attach Add to Cart handlers
+    document.querySelectorAll("button[data-title]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (!isSignedIn()) {
+          alert("You must sign in to add items to cart.");
+          window.location.href = "SignInPage.html";
+          return;
+        }
+        const title = btn.getAttribute("data-title");
+        const price = btn.getAttribute("data-price");
+        const result = addToCart({ title, price });
+        alert(result.message);
+      });
     });
-  });
 
-  // Add any other UI code you want here (view cart button, sign out button, etc.)
-</script>
+    // Add any other UI code you want here (view cart button, sign out button, etc.)
+  </script>
 
   <body>
     <a href="cart.html" class="cart-float" title="View Cart">
@@ -59,161 +56,172 @@
         <a href="SignInPage.html">Sign In</a>
       </nav>
     </header>
-<!-- fiction Section -->
+    <!-- fiction Section -->
 
-<section id="fiction">
-  <h2>
-  Fiction
-</h2>
-  <div class="box-container">
-    <div class="box">
-      <img src="images/Books/book1.jpg" alt="Book 1" />
-      <h3>The Shadow of the wind</h3>
-      <p>by Carlos Zafon</p>
-      <p class="price">AED 13.95</p>
-      <button data-title="the-shadow" data-price="13.95">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book2.jpg" alt="Book 2" />
-      <h3>The midnight library</h3>
-      <p>by Michelle Obama</p>
-      <p class="price">AED 14.50</p>
-      <button data-title="midnight" data-price="14.50">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book3.webp" alt="Book 3" />
-      <h3>The prisoner of heaven</h3>
-      <p>by Carlos Zafon</p>
-      <p class="price">AED 12.75</p>
-      <button data-title="prisoner-of-heaven" data-price="12.75">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book4.jpg" alt="Book 4" />
-      <h3>1984</h3>
-      <p>by Paul Kalanithi</p>
-      <p class="price">AED 10.99</p>
-      <button data-title="When Breath Becomes Air" data-price="10.99">Add to Cart</button>
-    </div>
-  </div>
-</section>
+    <section id="fiction">
+      <h2>Fiction</h2>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/Books/book1.jpg" alt="Book 1" />
+          <h3>The Shadow of the wind</h3>
+          <p>by Carlos Zafon</p>
+          <p class="price">AED 13.95</p>
+          <button data-title="the-shadow" data-price="13.95">
+            Add to Cart
+          </button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book2.jpg" alt="Book 2" />
+          <h3>The midnight library</h3>
+          <p>by Michelle Obama</p>
+          <p class="price">AED 14.50</p>
+          <button data-title="midnight" data-price="14.50">Add to Cart</button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book3.webp" alt="Book 3" />
+          <h3>The prisoner of heaven</h3>
+          <p>by Carlos Zafon</p>
+          <p class="price">AED 12.75</p>
+          <button data-title="prisoner-of-heaven" data-price="12.75">
+            Add to Cart
+          </button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book4.jpg" alt="Book 4" />
+          <h3>1984</h3>
+          <p>by Paul Kalanithi</p>
+          <p class="price">AED 10.99</p>
+          <button data-title="When Breath Becomes Air" data-price="10.99">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
 
-<!-- Memoir Section -->
+    <!-- Memoir Section -->
 
-<section id="Memoir">
-  <h2>
-  Memoir
-</h2>
-  <div class="box-container">
-    <div class="box">
-      <img src="images/Books/book5.jpg" alt="Book 5" />
-      <h3>Black Milk</h3>
-      <p>by Elif Shafak</p>
-      <p class="price">AED15.20</p>
-      <button data-title="black milk" data-price="15.20">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book6.jpg" alt="Book 6" />
-      <h3>Educated</h3>
-      <p>by Tara westover</p>
-      <p class="price">AED13.89</p>
-      <button data-title="educated" data-price="13.89">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book7.jpg" alt="Book 7" />
-      <h3>Once more we saw stars</h3>
-      <p>by Peter Frankopan</p>
-      <p class="price">AED 14.10</p>
-      <button data-title="once more" data-price="14.10">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book8.jpg" alt="Book 8" />
-      <h3>Song without words</h3>
-      <p>by Gerald Shea</p>
-      <p class="price">AED11.80</p>
-      <button data-title="The Wright Brothers" data-price="11.80">Add to Cart</button>
-    </div>
-  </div>
-</section>
+    <section id="Memoir">
+      <h2>Memoir</h2>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/Books/book5.jpg" alt="Book 5" />
+          <h3>Black Milk</h3>
+          <p>by Elif Shafak</p>
+          <p class="price">AED15.20</p>
+          <button data-title="black milk" data-price="15.20">
+            Add to Cart
+          </button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book6.jpg" alt="Book 6" />
+          <h3>Educated</h3>
+          <p>by Tara westover</p>
+          <p class="price">AED13.89</p>
+          <button data-title="educated" data-price="13.89">Add to Cart</button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book7.jpg" alt="Book 7" />
+          <h3>Once more we saw stars</h3>
+          <p>by Peter Frankopan</p>
+          <p class="price">AED 14.10</p>
+          <button data-title="once more" data-price="14.10">Add to Cart</button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book8.jpg" alt="Book 8" />
+          <h3>Song without words</h3>
+          <p>by Gerald Shea</p>
+          <p class="price">AED11.80</p>
+          <button data-title="The Wright Brothers" data-price="11.80">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
 
+    <!-- History Section -->
 
+    <section id="history">
+      <h2>History</h2>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/Books/book9.jpg" alt="Book 5" />
+          <h3>الطنطورية</h3>
+          <p>by Radwa Ashour</p>
+          <p class="price">AED15.20</p>
+          <button data-title="Sapiens" data-price="15.20">Add to Cart</button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book10.jpg" alt="Book 6" />
+          <h3>The trucial states</h3>
+          <p>by Jared Diamond</p>
+          <p class="price">AED13.89</p>
+          <button data-title="the trucial states" data-price="13.89">
+            Add to Cart
+          </button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book11.jpg" alt="Book 7" />
+          <h3>I saw ramallah</h3>
+          <p>by Mourid bargouti</p>
+          <p class="price">AED14.10</p>
+          <button data-title="i saw ramallah" data-price="14.10">
+            Add to Cart
+          </button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book12.jpg" alt="Book 8" />
+          <h3>قُطُز</h3>
+          <p>by Mounther qabani</p>
+          <p class="price">AED11.80</p>
+          <button data-title="The Wright Brothers" data-price="11.80">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
 
+    <!-- Self-Help Section -->
 
-<!-- History Section -->
-
-<section id="history">
-  <h2>
-  History
-</h2>
-  <div class="box-container">
-    <div class="box">
-      <img src="images/Books/book9.jpg" alt="Book 5" />
-      <h3>الطنطورية</h3>
-      <p>by Radwa Ashour</p>
-      <p class="price">AED15.20</p>
-      <button data-title="Sapiens" data-price="15.20">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book10.jpg" alt="Book 6" />
-      <h3>The trucial states</h3>
-      <p>by Jared Diamond</p>
-      <p class="price">AED13.89</p>
-      <button data-title="the trucial states" data-price="13.89">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book11.jpg" alt="Book 7" />
-      <h3>I saw ramallah</h3>
-      <p>by Mourid bargouti</p>
-      <p class="price">AED14.10</p>
-      <button data-title="i saw ramallah" data-price="14.10">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book12.jpg" alt="Book 8" />
-      <h3>قُطُز</h3>
-      <p>by Mounther qabani</p>
-      <p class="price">AED11.80</p>
-      <button data-title="The Wright Brothers" data-price="11.80">Add to Cart</button>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Self-Help Section -->
-
-<section id="self-help">
-  <h2>
-  Self-Help
-</h2>
-  <div class="box-container">
-    <div class="box">
-      <img src="images/Books/book13.jpg" alt="Book 9" />
-      <h3>Atomic habits</h3>
-      <p>by Charles Duhigg</p>
-      <p class="price">AED13.30</p>
-      <button data-title="The Power of Habit" data-price="13.30">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book14.jpg" alt="Book 10" />
-      <h3>the 7 habits</h3>
-      <p>by James Clear</p>
-      <p class="price">AED14.25</p>
-      <button data-title="Atomic Habits" data-price="14.25">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book15.jpg" alt="Book 11" />
-      <h3>Surronded by idiots</h3>
-      <p>by Jay Shetty</p>
-      <p class="price">AED12.99</p>
-      <button data-title="Think Like a Monk" data-price="12.99">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book16.jpg" alt="Book 12" />
-      <h3>Mindset</h3>
-      <p>by Carlos Dwek</p>
-      <p class="price">AED11.40</p>
-      <button data-title="You Are a Badass" data-price="11.40">Add to Cart</button>
-    </div>
-  </div>
-</section>
+    <section id="self-help">
+      <h2>Self-Help</h2>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/Books/book13.jpg" alt="Book 9" />
+          <h3>Atomic habits</h3>
+          <p>by Charles Duhigg</p>
+          <p class="price">AED13.30</p>
+          <button data-title="The Power of Habit" data-price="13.30">
+            Add to Cart
+          </button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book14.jpg" alt="Book 10" />
+          <h3>the 7 habits</h3>
+          <p>by James Clear</p>
+          <p class="price">AED14.25</p>
+          <button data-title="Atomic Habits" data-price="14.25">
+            Add to Cart
+          </button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book15.jpg" alt="Book 11" />
+          <h3>Surronded by idiots</h3>
+          <p>by Jay Shetty</p>
+          <p class="price">AED12.99</p>
+          <button data-title="Think Like a Monk" data-price="12.99">
+            Add to Cart
+          </button>
+        </div>
+        <div class="box">
+          <img src="images/Books/book16.jpg" alt="Book 12" />
+          <h3>Mindset</h3>
+          <p>by Carlos Dwek</p>
+          <p class="price">AED11.40</p>
+          <button data-title="You Are a Badass" data-price="11.40">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
   </body>
-  </html>
+</html>
