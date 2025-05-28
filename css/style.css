@@ -15,12 +15,6 @@ body {
   justify-content: space-between;
   padding: 0 20px;
   background-color: #8b5e3c;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  z-index: 10;
-}
-
-.navbar.scrolled {
-  background-color: #8b5e3c;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   z-index: 10;
 }

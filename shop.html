@@ -9,21 +9,15 @@
     <style>
       body {
         padding-top: 100px;
-        margin: 0;
-        background-color: #f5f3e7;
         color: #3e3e3e;
-        font-family: Arial, sans-serif;
       }
-      h1,
-      h2,
-      h3 {
+
+      .container {
         margin: 0;
-      }
-      h2 {
         text-align: center;
-        color: #ffffff;
-        background-color: #8b5e3c;
+        color: white;
         padding: 10px 0;
+        height: 40px;
       }
 
       .box-container {
@@ -35,7 +29,7 @@
       }
 
       .box {
-        background: #ffffff;
+        background-color: white;
         border-radius: 15px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         overflow: hidden;
@@ -51,80 +45,35 @@
         height: 60%;
       }
       .box h3 {
-        font-size: 1.1rem;
+        font-size: 17px;
         padding: 10px;
         color: #3e3e3e;
       }
       .box p {
         padding: 0 10px;
-        font-size: 0.9rem;
+        font-size: 15px;
         color: #666;
         margin-bottom: 10px;
       }
       .price {
         font-weight: bold;
-        color: #8b5e3c;
+        color: black;
         padding: 0 10px 10px;
       }
       .box button {
         display: block;
-        width: calc(100% - 20px);
+        width: 90%;
         margin: 0 10px 15px;
         padding: 10px;
-        color: #ffffff;
+        color: white;
         background-color: #c9a66b;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 0.9rem;
+        font-size: 15px;
       }
       .box button:hover {
         background-color: #8b5e3c;
-      }
-
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 20px;
-        background-color: #8b5e3c;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-        z-index: 100;
-      }
-      .navbar .logo img {
-        display: block;
-      }
-      .navbar nav {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        height: 64px;
-      }
-      .navbar nav a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 1rem;
-      }
-      .cart-float {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background-color: #c9a66b;
-        padding: 10px;
-        border-radius: 50%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-        transition: transform 0.3s;
-        z-index: 101;
-      }
-      .cart-float img {
-        width: 35px;
-        height: 35px;
-      }
-      .cart-float:hover {
-        transform: scale(1.1);
       }
     </style>
   </head>
@@ -148,7 +97,12 @@
       </nav>
     </header>
 
-    <h2>Books You Must Read</h2>
+    <h2
+      style="background: url(images/Fiction.jpg); background-position: center"
+      class="container"
+    >
+      Fiction
+    </h2>
 
     <section id="fiction">
       <div class="box-container">
