@@ -58,6 +58,7 @@
       }
     </style>
   </head>
+
   <body>
     <div class="signin-box">
       <h2>Sign In</h2>
@@ -95,9 +96,9 @@
         } else {
           contntEl.innerHTML =
             "<label>New Username:</label>" +
-            '<input id="inpNewUser" type="text">' +
+            '<input id="inpNewUser" type="text" >' +
             "<label>New Password:</label>" +
-            '<input id="inpNewPass" type="password">';
+            '<input id="inpNewPass" type="password" >';
         }
       }
       userTypeEl.addEventListener("change", createContent);
@@ -122,13 +123,14 @@
           var idFound = false;
           for (var i = 0; i < users.length; i++) {
             if (users[i].username === u && users[i].password === p) {
-              idFfound = true;
+              idFound = true;
               break;
             }
           }
           if (idFound) {
             msgEl.style.color = "green";
             msgEl.textContent = "User login successful!";
+            window.location.href = "Home page.html";
           } else {
             msgEl.textContent = "Invalid username or password.";
           }
@@ -136,17 +138,16 @@
           var nu = document.getElementById("inpNewUser").value;
           var np = document.getElementById("inpNewPass").value;
           if (!nu || !np) {
-            msgEl.textContent = "Please fill both contnt.";
+            msgEl.textContent = "Please fill both.";
             return;
           }
-          // check duplicate
           for (var j = 0; j < users.length; j++) {
             if (users[j].username === nu) {
               msgEl.textContent = "Username already exists.";
               return;
             }
           }
-          // add to array
+
           users.push({ username: nu, password: np });
           msgEl.style.color = "green";
           msgEl.textContent = "User created! Please sign in.";
