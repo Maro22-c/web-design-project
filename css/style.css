@@ -360,7 +360,7 @@ body {
   padding-top: 100px;
   color: #3e3e3e;
 }
-h2 {
+section h2 {
   text-align: center;
 background: linear-gradient(to right, #c9a66b, #8b5e3c);
 height: 40px;
