@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <style>
+      body {
+        background: #f5f3e7;
+        font-family: Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .signin-box {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        padding: 40px;
+        width: 320px;
+      }
+      .signin-box h2 {
+        margin-top: 0;
+        text-align: center;
+        color: #8b5e3c;
+      }
+      .signin-box label {
+        display: block;
+        margin: 7px;
+        color: #3e3e3e;
+      }
+      .signin-box input,
+      .signin-box select {
+        width: 333px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .signin-box button {
+        margin-top: 20px;
+        width: 333px;
+        padding: 10px;
+        background: #c9a66b;
+        border: none;
+        color: white;
+        font-size: large;
+        border-radius: 4px;
+      }
+      .signin-box button:hover {
+        background: #8b5e3c;
+      }
+      .message {
+        margin-top: 20px;
+        text-align: center;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signin-box">
+      <h2>Sign In</h2>
+
+      <label for="userType"> Sign in as:</label>
+      <select id="userType">
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+        <option value="new">New User</option>
+      </select>
+
+      <div id="contnt"></div>
+
+      <button id="submit">Submit</button>
+      <div class="message" id="msg"></div>
+    </div>
+
+    <script>
+      var admin = { username: "admin", password: "admin123" };
+      var users = [{ username: "user1", password: "pass1" }];
+
+      var userTypeEl = document.getElementById("userType");
+      var contntEl = document.getElementById("contnt");
+      var msgEl = document.getElementById("msg");
+
+      function createContent() {
+        var m = userTypeEl.value;
+
+        if (m === "admin" || m === "user") {
+          contntEl.innerHTML =
+            "<label>Username:</label>" +
+            '<input id="inpUser" type="text">' +
+            "<label>Password:</label>" +
+            '<input id="inpPass" type="password">';
+        } else {
+          contntEl.innerHTML =
+            "<label>New Username:</label>" +
+            '<input id="inpNewUser" type="text">' +
+            "<label>New Password:</label>" +
+            '<input id="inpNewPass" type="password">';
+        }
+      }
+      userTypeEl.addEventListener("change", createContent);
+      createContent();
+
+      document.getElementById("submit").addEventListener("click", function () {
+        var mode = userTypeEl.value;
+        msgEl.style.color = "red";
+
+        if (mode === "admin") {
+          var u = document.getElementById("inpUser").value;
+          var p = document.getElementById("inpPass").value;
+          if (u === admin.username && p === admin.password) {
+            msgEl.style.color = "green";
+            msgEl.textContent = "Admin login successful!";
+          } else {
+            msgEl.textContent = "Invalid admin credentials.";
+          }
+        } else if (mode === "user") {
+          var u = document.getElementById("inpUser").value;
+          var p = document.getElementById("inpPass").value;
+          var idFound = false;
+          for (var i = 0; i < users.length; i++) {
+            if (users[i].username === u && users[i].password === p) {
+              idFfound = true;
+              break;
+            }
+          }
+          if (idFound) {
+            msgEl.style.color = "green";
+            msgEl.textContent = "User login successful!";
+          } else {
+            msgEl.textContent = "Invalid username or password.";
+          }
+        } else {
+          var nu = document.getElementById("inpNewUser").value;
+          var np = document.getElementById("inpNewPass").value;
+          if (!nu || !np) {
+            msgEl.textContent = "Please fill both contnt.";
+            return;
+          }
+          // check duplicate
+          for (var j = 0; j < users.length; j++) {
+            if (users[j].username === nu) {
+              msgEl.textContent = "Username already exists.";
+              return;
+            }
+          }
+          // add to array
+          users.push({ username: nu, password: np });
+          msgEl.style.color = "green";
+          msgEl.textContent = "User created! Please sign in.";
+          userTypeEl.value = "user";
+          createContent();
+        }
+      });
+    </script>
+  </body>
+</html>
