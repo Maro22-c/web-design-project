@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In</title>
-
     <style>
       body {
         background: #f5f3e7;
@@ -33,7 +32,7 @@
       }
       .signin-box input,
       .signin-box select {
-        width: 333px;
+        width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -41,13 +40,14 @@
       }
       .signin-box button {
         margin-top: 20px;
-        width: 333px;
+        width: 100%;
         padding: 10px;
         background: #c9a66b;
         border: none;
         color: white;
         font-size: large;
         border-radius: 4px;
+        cursor: pointer;
       }
       .signin-box button:hover {
         background: #8b5e3c;
@@ -59,12 +59,11 @@
       }
     </style>
   </head>
-
   <body>
     <div class="signin-box">
       <h2>Sign In</h2>
 
-      <label for="userType"> Sign in as:</label>
+      <label for="userType">Sign in as:</label>
       <select id="userType">
         <option value="admin">Admin</option>
         <option value="user">User</option>
@@ -76,6 +75,6 @@
       <button id="submit">Submit</button>
       <div class="message" id="msg"></div>
     </div>
-    <script src="js/Signin.js"></script>
+    <script src="js/Main.js"></script>
   </body>
 </html>
