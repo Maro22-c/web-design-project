@@ -7,11 +7,11 @@
     <link rel="icon" href="images/LogoB.png" />
     <link rel="stylesheet" href="css/style.css" />
     <style>
+      /* YOUR EXISTING STYLES BELOW (unchanged) */
       body {
         padding-top: 100px;
         color: #3e3e3e;
       }
-
       .container {
         margin: 0;
         text-align: center;
@@ -19,7 +19,6 @@
         padding: 10px 0;
         height: 40px;
       }
-
       .box-container {
         display: flex;
         justify-content: center;
@@ -27,7 +26,6 @@
         flex-wrap: wrap;
         padding: 20px;
       }
-
       .box {
         background-color: white;
         border-radius: 15px;
@@ -75,10 +73,38 @@
       .box button:hover {
         background-color: #8b5e3c;
       }
+
+      /* CART SECTION STYLES */
+      #cart-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      #cart-section h2 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      #cart-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      #cart-table th,
+      #cart-table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      #cart-table th {
+        background: #f0f0f0;
+      }
+      #cart-table tfoot td {
+        font-weight: bold;
+        background: #fafafa;
+      }
     </style>
   </head>
   <body>
-    <a href="cart.html" class="cart-float" title="View Cart">
+    <a href="#cart-section" class="cart-float" title="View Cart">
       <img src="images/LogoB.png" alt="Cart Icon" />
     </a>
 
@@ -92,8 +118,8 @@
         <a href="Home Page.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="contact.html">Contact Us</a>
-        <a href="cart.html">Cart</a>
-        <a href="SignIn.html">Sign In</a>
+        <a href="#cart-section">Cart</a>
+        <a href="SignInPage.html">Sign In</a>
       </nav>
     </header>
 
@@ -111,9 +137,7 @@
           <h3>The Hobbit</h3>
           <p>by J.R.R. Tolkien</p>
           <p class="price">$12.99</p>
-          <button data-title="The Hobbit" data-price="12.99">
-            Add to Cart
-          </button>
+          <button class="add-btn">Add to Cart</button>
         </div>
 
         <div class="box">
@@ -124,9 +148,7 @@
           <h3>The Midnight Library</h3>
           <p>by Matt Haig</p>
           <p class="price">$14.99</p>
-          <button data-title="The Midnight Library" data-price="14.99">
-            Add to Cart
-          </button>
+          <button class="add-btn">Add to Cart</button>
         </div>
 
         <div class="box">
@@ -137,9 +159,7 @@
           <h3>Where the Crawdads Sing</h3>
           <p>by Delia Owens</p>
           <p class="price">$13.49</p>
-          <button data-title="Where the Crawdads Sing" data-price="13.49">
-            Add to Cart
-          </button>
+          <button class="add-btn">Add to Cart</button>
         </div>
 
         <div class="box">
@@ -147,14 +167,96 @@
           <h3>1984</h3>
           <p>by George Orwell</p>
           <p class="price">$9.99</p>
-          <button data-title="1984" data-price="9.99">Add to Cart</button>
+          <button class="add-btn">Add to Cart</button>
         </div>
       </div>
     </section>
 
-    <script src="js/Main.js"></script>
-    <script src="js/Cart.js"></script>
+    <!-- CART SECTION -->
+    <section id="cart-section">
+      <h2>Your Cart</h2>
+      <table id="cart-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Unit Price</th>
+            <th>Qty</th>
+            <th>Line Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JS will insert rows here -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Grand Total</td>
+            <td id="grand-total">$0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
 
-    <script src="js/Main.js"></script>
+    <script>
+      // simple cart array
+      var cart = [];
+
+      // wire up every Add button
+      var buttons = document.getElementsByClassName("add-btn");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function () {
+          // grab <h3> and .price from this box
+          var box = this.parentNode;
+          var title = box.getElementsByTagName("h3")[0].textContent;
+          var priceText = box.getElementsByClassName("price")[0].textContent;
+          // remove the leading '$' then parse
+          var price = parseFloat(priceText.substring(1));
+
+          // add to cart
+          cart.push({ title: title, price: price });
+
+          // rebuild table
+          updateCartTable();
+        };
+      }
+
+      // rebuilds the cart table from cart[]
+      function updateCartTable() {
+        var tbody = document
+          .getElementById("cart-table")
+          .getElementsByTagName("tbody")[0];
+        tbody.innerHTML = ""; // clear
+
+        // tally quantities
+        var counts = {};
+        for (var j = 0; j < cart.length; j++) {
+          var t = cart[j].title;
+          var p = cart[j].price;
+          if (!counts[t]) counts[t] = { price: p, qty: 1 };
+          else counts[t].qty++;
+        }
+
+        // build rows
+        var grand = 0;
+        for (var t in counts) {
+          var row = tbody.insertRow();
+          var p = counts[t].price;
+          var q = counts[t].qty;
+          var lt = p * q;
+          grand += lt;
+
+          row.insertCell(0).textContent = t;
+          row.insertCell(1).textContent = "$" + p.toFixed(2);
+          row.insertCell(2).textContent = q;
+          row.insertCell(3).textContent = "$" + lt.toFixed(2);
+        }
+
+        // display grand total
+        document.getElementById("grand-total").textContent =
+          "$" + grand.toFixed(2);
+      }
+
+      // initialize
+      updateCartTable();
+    </script>
   </body>
 </html>
