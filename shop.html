@@ -7,7 +7,100 @@
     <link rel="icon" href="images/LogoB.png" />
     <link rel="stylesheet" href="css/style.css" />
     <style>
+      /* YOUR EXISTING STYLES BELOW (unchanged) */
+      body {
+        padding-top: 100px;
+        color: #3e3e3e;
+      }
+      .container {
+        margin: 0;
+        text-align: center;
+        color: white;
+        padding: 10px 0;
+        height: 40px;
+      }
+      .box-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        padding: 20px;
+      }
+      .box {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 200px;
+        transition: transform 0.3s;
+      }
+      .box:hover {
+        transform: translateY(-5px);
+      }
+      .box img {
+        display: block;
+        width: 100%;
+        height: 60%;
+      }
+      .box h3 {
+        font-size: 17px;
+        padding: 10px;
+        color: #3e3e3e;
+      }
+      .box p {
+        padding: 0 10px;
+        font-size: 15px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      .price {
+        font-weight: bold;
+        color: black;
+        padding: 0 10px 10px;
+      }
+      .box button {
+        display: block;
+        width: 90%;
+        margin: 0 10px 15px;
+        padding: 10px;
+        color: white;
+        background-color: #c9a66b;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+      .box button:hover {
+        background-color: #8b5e3c;
+      }
 
+      /* CART SECTION STYLES */
+      #cart-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      #cart-section h2 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      #cart-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      #cart-table th,
+      #cart-table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      #cart-table th {
+        background: #f0f0f0;
+      }
+      #cart-table tfoot td {
+        font-weight: bold;
+        background: #fafafa;
+      }
     </style>
   </head>
   <script src="auth.js"></script>
@@ -41,7 +134,7 @@
 </script>
 
   <body>
-    <a href="cart.html" class="cart-float" title="View Cart">
+    <a href="#cart-section" class="cart-float" title="View Cart">
       <img src="images/LogoB.png" alt="Cart Icon" />
     </a>
 
@@ -55,161 +148,145 @@
         <a href="Home Page.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="contact.html">Contact Us</a>
-        <a href="cart.html">Cart</a>
+        <a href="#cart-section">Cart</a>
         <a href="SignInPage.html">Sign In</a>
       </nav>
     </header>
-<!-- fiction Section -->
-<h2>
-  Fiction
-</h2>
-<section id="fiction">
-  <div class="box-container">
-    <div class="box">
-      <img src="images/Books/book1.jpg" alt="Book 1" />
-      <h3>The Shadow of the wind</h3>
-      <p>by Carlos Zafon</p>
-      <p class="price">AED 13.95</p>
-      <button data-title="the-shadow" data-price="13.95">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book2.jpg" alt="Book 2" />
-      <h3>The midnight library</h3>
-      <p>by Michelle Obama</p>
-      <p class="price">AED 14.50</p>
-      <button data-title="midnight" data-price="14.50">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book3.webp" alt="Book 3" />
-      <h3>The prisoner of heaven</h3>
-      <p>by Carlos Zafon</p>
-      <p class="price">AED 12.75</p>
-      <button data-title="prisoner-of-heaven" data-price="12.75">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book4.jpg" alt="Book 4" />
-      <h3>1984</h3>
-      <p>by Paul Kalanithi</p>
-      <p class="price">AED 10.99</p>
-      <button data-title="When Breath Becomes Air" data-price="10.99">Add to Cart</button>
-    </div>
-  </div>
-</section>
 
-<!-- Memoir Section -->
-<h2>
-  Memoir
-</h2>
-<section id="Memoir">
-  <div class="box-container">
-    <div class="box">
-      <img src="images/Books/book5.jpg" alt="Book 5" />
-      <h3>Black Milk</h3>
-      <p>by Elif Shafak</p>
-      <p class="price">AED15.20</p>
-      <button data-title="black milk" data-price="15.20">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book6.jpg" alt="Book 6" />
-      <h3>Educated</h3>
-      <p>by Tara westover</p>
-      <p class="price">AED13.89</p>
-      <button data-title="educated" data-price="13.89">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book7.jpg" alt="Book 7" />
-      <h3>Once more we saw stars</h3>
-      <p>by Peter Frankopan</p>
-      <p class="price">AED14.10</p>
-      <button data-title="once more" data-price="14.10">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book8.jpg" alt="Book 8" />
-      <h3>Song without words</h3>
-      <p>by Gerald Shea</p>
-      <p class="price">AED11.80</p>
-      <button data-title="The Wright Brothers" data-price="11.80">Add to Cart</button>
-    </div>
-  </div>
-</section>
+    <h2
+      style="background: url(images/Fiction.jpg); background-position: center"
+      class="container"
+    >
+      Fiction
+    </h2>
 
+    <section id="fiction">
+      <div class="box-container">
+        <div class="box">
+          <img src="images/Books/Hobbit.jpg" alt="The Hobbit cover" />
+          <h3>The Hobbit</h3>
+          <p>by J.R.R. Tolkien</p>
+          <p class="price">$12.99</p>
+          <button class="add-btn">Add to Cart</button>
+        </div>
 
+        <div class="box">
+          <img
+            src="images/Books/Midnight.jpg"
+            alt="The Midnight Library cover"
+          />
+          <h3>The Midnight Library</h3>
+          <p>by Matt Haig</p>
+          <p class="price">$14.99</p>
+          <button class="add-btn">Add to Cart</button>
+        </div>
 
+        <div class="box">
+          <img
+            src="images/Books/where-crawdads.jpg"
+            alt="Where the Crawdads Sing cover"
+          />
+          <h3>Where the Crawdads Sing</h3>
+          <p>by Delia Owens</p>
+          <p class="price">$13.49</p>
+          <button class="add-btn">Add to Cart</button>
+        </div>
 
-<!-- History Section -->
-<h2>
-  History
-</h2>
-<section id="history">
-  <div class="box-container">
-    <div class="box">
-      <img src="images/Books/book9.jpg" alt="Book 5" />
-      <h3>الطنطورية</h3>
-      <p>by Radwa Ashour</p>
-      <p class="price">AED15.20</p>
-      <button data-title="Sapiens" data-price="15.20">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book10.jpg" alt="Book 6" />
-      <h3>The trucial states</h3>
-      <p>by Jared Diamond</p>
-      <p class="price">AED13.89</p>
-      <button data-title="the trucial states" data-price="13.89">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book11.jpg" alt="Book 7" />
-      <h3>I saw ramallah</h3>
-      <p>by Mourid bargouti</p>
-      <p class="price">AED14.10</p>
-      <button data-title="i saw ramallah" data-price="14.10">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book12.jpg" alt="Book 8" />
-      <h3>قُطُز</h3>
-      <p>by Mounther qabani</p>
-      <p class="price">AED11.80</p>
-      <button data-title="The Wright Brothers" data-price="11.80">Add to Cart</button>
-    </div>
-  </div>
-</section>
+        <div class="box">
+          <img src="images/Books/1984.jpg" alt="1984 cover" />
+          <h3>1984</h3>
+          <p>by George Orwell</p>
+          <p class="price">$9.99</p>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+    </section>
 
+    <!-- CART SECTION -->
+    <section id="cart-section">
+      <h2>Your Cart</h2>
+      <table id="cart-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Unit Price</th>
+            <th>Qty</th>
+            <th>Line Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JS will insert rows here -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Grand Total</td>
+            <td id="grand-total">$0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
 
+    <script>
+      // simple cart array
+      var cart = [];
 
-<!-- Self-Help Section -->
-<h2>
-  Self-Help
-</h2>
-<section id="self-help">
-  <div class="box-container">
-    <div class="box">
-      <img src="images/Books/book13.jpg" alt="Book 9" />
-      <h3>Atomic habits</h3>
-      <p>by Charles Duhigg</p>
-      <p class="price">AED13.30</p>
-      <button data-title="The Power of Habit" data-price="13.30">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book14.jpg" alt="Book 10" />
-      <h3>the 7 habits</h3>
-      <p>by James Clear</p>
-      <p class="price">AED14.25</p>
-      <button data-title="Atomic Habits" data-price="14.25">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book15.jpg" alt="Book 11" />
-      <h3>Surronded by idiots</h3>
-      <p>by Jay Shetty</p>
-      <p class="price">AED12.99</p>
-      <button data-title="Think Like a Monk" data-price="12.99">Add to Cart</button>
-    </div>
-    <div class="box">
-      <img src="images/Books/book16.jpg" alt="Book 12" />
-      <h3>Mindset</h3>
-      <p>by Carlos Dwek</p>
-      <p class="price">AED11.40</p>
-      <button data-title="You Are a Badass" data-price="11.40">Add to Cart</button>
-    </div>
-  </div>
-</section>
+      // wire up every Add button
+      var buttons = document.getElementsByClassName("add-btn");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function () {
+          // grab <h3> and .price from this box
+          var box = this.parentNode;
+          var title = box.getElementsByTagName("h3")[0].textContent;
+          var priceText = box.getElementsByClassName("price")[0].textContent;
+          // remove the leading '$' then parse
+          var price = parseFloat(priceText.substring(1));
+
+          // add to cart
+          cart.push({ title: title, price: price });
+
+          // rebuild table
+          updateCartTable();
+        };
+      }
+
+      // rebuilds the cart table from cart[]
+      function updateCartTable() {
+        var tbody = document
+          .getElementById("cart-table")
+          .getElementsByTagName("tbody")[0];
+        tbody.innerHTML = ""; // clear
+
+        // tally quantities
+        var counts = {};
+        for (var j = 0; j < cart.length; j++) {
+          var t = cart[j].title;
+          var p = cart[j].price;
+          if (!counts[t]) counts[t] = { price: p, qty: 1 };
+          else counts[t].qty++;
+        }
+
+        // build rows
+        var grand = 0;
+        for (var t in counts) {
+          var row = tbody.insertRow();
+          var p = counts[t].price;
+          var q = counts[t].qty;
+          var lt = p * q;
+          grand += lt;
+
+          row.insertCell(0).textContent = t;
+          row.insertCell(1).textContent = "$" + p.toFixed(2);
+          row.insertCell(2).textContent = q;
+          row.insertCell(3).textContent = "$" + lt.toFixed(2);
+        }
+
+        // display grand total
+        document.getElementById("grand-total").textContent =
+          "$" + grand.toFixed(2);
+      }
+
+      // initialize
+      updateCartTable();
+    </script>
   </body>
   </html>
