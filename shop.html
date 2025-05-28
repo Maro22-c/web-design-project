@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping</title>
+    <link rel="icon" href="images/LogoB.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        padding-top: 100px;
+        margin: 0;
+        background-color: #f5f3e7;
+        color: #3e3e3e;
+        font-family: Arial, sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+      }
+      h2 {
+        text-align: center;
+        color: #ffffff;
+        background-color: #8b5e3c;
+        padding: 10px 0;
+      }
+
+      .box-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        padding: 20px;
+      }
+
+      .box {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 200px;
+        transition: transform 0.3s;
+      }
+      .box:hover {
+        transform: translateY(-5px);
+      }
+      .box img {
+        display: block;
+        width: 100%;
+        height: 60%;
+      }
+      .box h3 {
+        font-size: 1.1rem;
+        padding: 10px;
+        color: #3e3e3e;
+      }
+      .box p {
+        padding: 0 10px;
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      .price {
+        font-weight: bold;
+        color: #8b5e3c;
+        padding: 0 10px 10px;
+      }
+      .box button {
+        display: block;
+        width: calc(100% - 20px);
+        margin: 0 10px 15px;
+        padding: 10px;
+        color: #ffffff;
+        background-color: #c9a66b;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+      .box button:hover {
+        background-color: #8b5e3c;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        background-color: #8b5e3c;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        z-index: 100;
+      }
+      .navbar .logo img {
+        display: block;
+      }
+      .navbar nav {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        height: 64px;
+      }
+      .navbar nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1rem;
+      }
+      .cart-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #c9a66b;
+        padding: 10px;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s;
+        z-index: 101;
+      }
+      .cart-float img {
+        width: 35px;
+        height: 35px;
+      }
+      .cart-float:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="cart.html" class="cart-float" title="View Cart">
+      <img src="images/LogoB.png" alt="Cart Icon" />
+    </a>
+
+    <header class="navbar">
+      <div class="logo">
+        <a href="Home Page.html">
+          <img src="images/LogoB.png" alt="Bookstore Logo" width="100" />
+        </a>
+      </div>
+      <nav>
+        <a href="Home Page.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="cart.html">Cart (0)</a>
+      </nav>
+    </header>
+
+    <h2>Books You Must Read</h2>
+
+    <section id="fiction">
+      <div class="box-container">
+        <div class="box">
+          <img src="images/Books/Hobbit.jpg" alt="The Hobbit cover" />
+          <h3>The Hobbit</h3>
+          <p>by J.R.R. Tolkien</p>
+          <p class="price">$12.99</p>
+          <button data-title="The Hobbit" data-price="12.99">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="box">
+          <img
+            src="images/Books/Midnight.jpg"
+            alt="The Midnight Library cover"
+          />
+          <h3>The Midnight Library</h3>
+          <p>by Matt Haig</p>
+          <p class="price">$14.99</p>
+          <button data-title="The Midnight Library" data-price="14.99">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="box">
+          <img
+            src="images/Books/where-crawdads.jpg"
+            alt="Where the Crawdads Sing cover"
+          />
+          <h3>Where the Crawdads Sing</h3>
+          <p>by Delia Owens</p>
+          <p class="price">$13.49</p>
+          <button data-title="Where the Crawdads Sing" data-price="13.49">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="box">
+          <img src="images/Books/1984.jpg" alt="1984 cover" />
+          <h3>1984</h3>
+          <p>by George Orwell</p>
+          <p class="price">$9.99</p>
+          <button data-title="1984" data-price="9.99">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
