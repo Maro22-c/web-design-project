@@ -103,7 +103,7 @@
       userTypeEl.addEventListener("change", createContent);
       createContent();
 
-      document.getElementById("submit").addEventListener("click", function () {
+      function submitting() {
         var mode = userTypeEl.value;
         msgEl.style.color = "red";
 
@@ -153,7 +153,8 @@
           userTypeEl.value = "user";
           createContent();
         }
-      });
+      }
+      document.getElementById("submit").addEventListener("click", submitting);
     </script>
   </body>
 </html>
